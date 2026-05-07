@@ -16,10 +16,21 @@ public class Function {
     public void getFunction(String input) {
         input = input.trim();
         // f(x)
-        if (input.length() >= 4 && input.contains("f(x)=")) {
-            System.out.println("this works");
+        if (input.length() >= 6 && input.contains("f(x)=")) {
+            if (input.contains("f(x)=x")) {
+
+            }
+            else if (input.contains("f(x)=x^2")) {
+
+            }
+            else if (input.contains("f(x)=x^3")) {
+
+            }
+            else {
+                
+            }
         } else {
-            System.out.println("6🤷7");
+            System.out.println("");
             return;
         }
     }

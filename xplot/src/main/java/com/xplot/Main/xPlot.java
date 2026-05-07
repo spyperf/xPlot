@@ -10,8 +10,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+
+
 /* cd "C:\Users\spype\Downloads\xPlot!\xplot"
-mvn clean javafx:run */
+Users/tommyxu/APCS/xPlot/xplot
+mvn clean javafx:run */ 
+
+
+
 public class xPlot extends Application {
 
     private ArrayList<String> functionsList = new ArrayList<String>();
@@ -46,7 +52,6 @@ public class xPlot extends Application {
 
     @Override
     public void start(Stage mainStage) throws Exception {
-        Function function = new Function(functionsList);
         HBox root = new HBox();
         root.setSpacing(30);
         TextField text = new TextField();
@@ -55,13 +60,14 @@ public class xPlot extends Application {
         TableView functionTable = new TableView<String>();
         TableColumn functionColumn = new TableColumn<Function, String>("Functions");
         root.getChildren().addAll(functionTable);
+        
 
         mainStage.setTitle("xPlot");
         mainStage.setScene(new Scene(root, 800, 600));
         text.setOnAction(event -> {
             String input = text.getText();
-            function.addToList(input);
-            function.getFunction(input);
+            addToList(input);
+            getFunction(input);
         });
         mainStage.show();
     }

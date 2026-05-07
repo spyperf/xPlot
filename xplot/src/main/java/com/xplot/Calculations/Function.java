@@ -2,36 +2,26 @@ package com.xplot.Calculations;
 import java.util.ArrayList;
 
 public class Function {
-    private ArrayList<String> functionsList;
-
-    public Function(ArrayList<String> functionsList) {
-        this.functionsList = functionsList;
-    }
-
-    public void addToList(String function) {
-        functionsList.add(function);
+    public void Function(String input, String index, boolean Equation) {
     }
 
     //public void removeFromList
     public void getFunction(String input) {
         input = input.trim();
+        String afterFunction;
         // f(x)
         if (input.length() >= 6 && input.contains("f(x)=")) {
-            if (input.contains("f(x)=x")) {
-
+            afterFunction = input.substring(input.indexOf("=") + 1);
+            if (afterFunction.length() != 0 && afterFunction.contains("x")) {
+                //go to equation class and solve for x
             }
-            else if (input.contains("f(x)=x^2")) {
-
-            }
-            else if (input.contains("f(x)=x^3")) {
-
+            else if (afterFunction.length() != 0 && !afterFunction.contains("x")) {
+                //go to solveMath class and solve the math with  only constants
             }
             else {
-                
-            }
-        } else {
-            System.out.println("");
-            return;
+                System.out.println("");
+                return;
+            }  
         }
     }
 }

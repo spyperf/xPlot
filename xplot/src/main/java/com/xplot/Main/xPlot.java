@@ -5,6 +5,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -50,6 +52,10 @@ public class xPlot extends Application {
         TextField text = new TextField();
         root.getChildren().addAll(text);
         //TableView
+        TableView functionTable = new TableView<String>();
+        TableColumn functionColumn = new TableColumn<Function, String>("Functions");
+        root.getChildren().addAll(functionTable);
+
         mainStage.setTitle("xPlot");
         mainStage.setScene(new Scene(root, 800, 600));
         text.setOnAction(event -> {

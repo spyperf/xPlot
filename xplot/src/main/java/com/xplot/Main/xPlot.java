@@ -21,6 +21,15 @@ public class xPlot extends Application {
     private void addToList(String function) {
         functionsList.add(function);
     }
+    private void removeFromList(String function) {
+        int index = -1;
+        for (int i = 0; i < functionsList.size(); i++) {
+            if (functionsList.get(i) == function) {
+                index = i;
+            }
+        }
+        functionsList.remove(index);
+    }
 
     private void getFunction(String function) {
     }

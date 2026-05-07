@@ -19,7 +19,7 @@ public class Function {
         if (input.length() >= 4 && input.contains("f(x)=")) {
             System.out.println("this works");
         } else {
-            System.out.println("Womp womp");
+            System.out.println("6🤷7");
             return;
         }
     }

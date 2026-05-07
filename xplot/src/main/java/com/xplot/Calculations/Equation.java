@@ -1,4 +1,4 @@
-package com.xplot;
+package com.xplot.Calculations;
 import java.util.*;
 
 public class Equation {

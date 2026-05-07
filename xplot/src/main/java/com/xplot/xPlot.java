@@ -20,8 +20,7 @@ public class xPlot extends Application {
         root.getChildren().addAll();
         Label label = new Label("oleleolala");
         TextField text = new TextField();
-        //
-        TableView
+        //TableView
         mainStage.setTitle("xPlot");
         mainStage.setScene(new Scene(label, 800, 600));
         mainStage.setScene(new Scene(text, 500, 500));

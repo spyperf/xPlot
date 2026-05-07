@@ -13,7 +13,6 @@ mvn clean javafx:run */
 public class xPlot extends Application {
 
     private ArrayList<String> functionsList = new ArrayList<String>();
-
     public ArrayList<String> getFunctionsList() {
         return functionsList;
     }
@@ -27,6 +26,11 @@ public class xPlot extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public void extendList() {
+        if (!functionsList.get(functionsList.size()-1).trim().equals(""));
+        functionsList.add("");
     }
 
     @Override

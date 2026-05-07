@@ -6,5 +6,6 @@ public class Equation {
 
     }
     public void solveArithmetic(String equation, int column) {
+        
     }
 }

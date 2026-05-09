@@ -5,11 +5,18 @@ public class Equation {
     public Equation() {
 
     }
-    public double solveArithmetic(String equation, int column) {
+    //Math Stuff
+    public double solveArithmetic(ArrayList<String> parts) {
+
+        double currentValue = Double.parseDouble(parts.get(0));
+        for (int i = 1; i < parts.size(); i+=2) 
+
+
         return 0;
     }
 
-    public ArrayList<String> equationParts(String equation) {
+    //Parse equation
+    public ArrayList<String> equationParts(String equation, int column) {
         ArrayList<String> parts = new ArrayList<String>();
         String currNumber = "";
         for (int i = 0; i < equation.length(); i++) {

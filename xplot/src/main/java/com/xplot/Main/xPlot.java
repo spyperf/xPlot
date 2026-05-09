@@ -1,5 +1,6 @@
 package com.xplot.Main;
 import  com.xplot.Calculations.Function;
+import com.xplot.Calculations.Equation;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -13,7 +14,7 @@ import javafx.stage.Stage;
 
 
 /* cd "C:\Users\spype\Downloads\xPlot!\xplot"
-Users/tommyxu/APCS/xPlot/xplot
+cd /Users/tommyxu/APCS/xPlot/xplot
 mvn clean javafx:run */ 
 
 
@@ -43,11 +44,15 @@ public class xPlot extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        Equation equation = new Equation();
+        //ArrayList<String> test = equation.equationParts("6+7*6-67");
+        //System.out.println(test);
     }
 
     public void extendList() {
-        if (!functionsList.get(functionsList.size()-1).trim().equals(""));
-        functionsList.add("");
+        if (!functionsList.get(functionsList.size()-1).trim().equals("")) {
+            functionsList.add("");
+        }
     }
 
     @Override

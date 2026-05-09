@@ -1,0 +1,6 @@
+com/xplot/Calculations/Equation.class
+com/xplot/Storage/storeMath.class
+com/xplot/Main/xPlot.class
+com/xplot/GUI/gui.class
+com/xplot/Calculations/solveMath.class
+com/xplot/Calculations/Function.class

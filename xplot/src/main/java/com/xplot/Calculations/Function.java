@@ -2,7 +2,7 @@ package com.xplot.Calculations;
 import java.util.ArrayList;
 
 public class Function {
-    public void Function(String input, String index, boolean Equation) {
+    public Function(String input, String index, boolean Equation) {
     }
 
     //public void removeFromList

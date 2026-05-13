@@ -1,5 +1,7 @@
 package com.xplot.Main;
-import  com.xplot.Calculations.Function;
+
+import com.xplot.Calculations.Function;
+import com.xplot.Calculations.LinearFunction;
 import com.xplot.Calculations.Equation;
 import java.util.ArrayList;
 import javafx.application.Application;
@@ -11,25 +13,22 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-
-
 /* cd "C:\Users\spype\Downloads\xPlot!\xplot"
 cd /Users/tommyxu/APCS/xPlot/xplot
-mvn clean javafx:run */ 
-
-
-
+mvn clean javafx:run */
 public class xPlot extends Application {
 
-    private ArrayList<String> functionsList = new ArrayList<String>();
-    public ArrayList<String> getFunctionsList() {
+    private ArrayList<Function> functionsList = new ArrayList<Function>();
+
+    public ArrayList<Function> getFunctionsList() {
         return functionsList;
     }
 
-    private void addToList(String function) {
+    private void addToList(Function function) {
         functionsList.add(function);
     }
-    private void removeFromList(String function) {
+
+    private void removeFromList(Function function) {
         int index = -1;
         for (int i = 0; i < functionsList.size(); i++) {
             if (functionsList.get(i) == function) {
@@ -39,7 +38,19 @@ public class xPlot extends Application {
         functionsList.remove(index);
     }
 
-    private void getFunction(String function) {
+    public void drawFunction(LinearFunction x) {
+
+    }
+
+    public void getFunction(String input) {
+        input = input.trim();
+        if (input.equals("f(x)=x") || input.equals("y=x")) {
+            Function x = new Function(new LinearFunction(input));
+            addToList(x);
+            drawFunction(x);
+        } else {
+            return;
+        }
     }
 
     public static void main(String[] args) {
@@ -50,7 +61,7 @@ public class xPlot extends Application {
     }
 
     public void extendList() {
-        if (!functionsList.get(functionsList.size()-1).trim().equals("")) {
+        if (!functionsList.get(functionsList.size() - 1).trim().equals("")) {
             functionsList.add("");
         }
     }
@@ -65,8 +76,6 @@ public class xPlot extends Application {
         TableView functionTable = new TableView<String>();
         TableColumn functionColumn = new TableColumn<Function, String>("Functions");
         root.getChildren().addAll(functionTable);
-        
-
         mainStage.setTitle("xPlot");
         mainStage.setScene(new Scene(root, 800, 600));
         text.setOnAction(event -> {

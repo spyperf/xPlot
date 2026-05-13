@@ -38,8 +38,8 @@ public class xPlot extends Application {
         functionsList.remove(index);
     }
 
-    public void drawFunction(LinearFunction x) {
-
+    public void drawFunction(Function function) {
+        
     }
 
     public void getFunction(String input) {
@@ -60,11 +60,11 @@ public class xPlot extends Application {
         //System.out.println(test);
     }
 
-    public void extendList() {
+    /*public void extendList() {
         if (!functionsList.get(functionsList.size() - 1).trim().equals("")) {
             functionsList.add("");
         }
-    }
+    }*/
 
     @Override
     public void start(Stage mainStage) throws Exception {
@@ -80,7 +80,6 @@ public class xPlot extends Application {
         mainStage.setScene(new Scene(root, 800, 600));
         text.setOnAction(event -> {
             String input = text.getText();
-            addToList(input);
             getFunction(input);
         });
         mainStage.show();

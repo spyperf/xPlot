@@ -27,5 +27,4 @@ public class LinearFunction extends Function {
     public int getY(int x) {
         return y;
     }
-
 }

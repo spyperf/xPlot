@@ -8,11 +8,12 @@ public class Equation {
     //Math Stuff
     public double solveArithmetic(ArrayList<String> parts) {
 
-        double currentValue = Double.parseDouble(parts.get(0));
-        for (int i = 1; i < parts.size(); i+=2) 
-
-
-        return 0;
+        double answer= Double.parseDouble(parts.get(0));
+        //First pass, check for multiplication and division
+        for (int i = 1; i < parts.size(); i+=2) {
+            
+        }
+        return answer;
     }
 
     //Parse equation
@@ -22,8 +23,26 @@ public class Equation {
         String currString = "";
         for (int i = 0; i < equation.length(); i++) {
             char currChar = equation.charAt(i);
+
+            //Check for negative sign instead of operator: subtraction
+            //The cases it is it negative sign instead of a subtraction sign are:
+            //1. '-' is the first character
+            //2. '-' is after an operator
+            //3. '-' is after an open parenthesis/bracket
+            if (currChar == '-' && (i == 0 || equation.charAt(i-1) == '+' ||
+                equation.charAt(i-1) == '-' || equation.charAt(i-1) == '*' ||
+                equation.charAt(i-1) == '/' || equation.charAt(i-1) == '(')
+            ) {
+                //Letter vs number
+                if (Character.isLetter(equation.charAt(i+1))) {
+                    currString += currChar;
+                } else {
+                    currNumber += currChar;
+                }
+            }
+
             //Multiple digit numbers should be one part
-            if (Character.isDigit(currChar)) {
+            if (Character.isDigit(currChar) || currChar == '.') {
                 currNumber += currChar;
             }
             //Multiple letters should be together to form something like "sqrt"
@@ -36,6 +55,10 @@ public class Equation {
                     parts.add(currNumber);
                     currNumber = "";
                 }
+                if (!currString.equals("")) {
+                    parts.add(currString);
+                    currString = "";
+                }
                 //Ignore spaces
                 if (currChar != ' ') {
                     parts.add(Character.toString(currChar));
@@ -45,7 +68,10 @@ public class Equation {
         }
         //Base case
         if (!currNumber.equals("")) {
-                parts.add(currNumber);
+            parts.add(currNumber);
+        }
+        if (!currString.equals("")) {
+            parts.add(currString);
         }
 
         System.out.println(parts);

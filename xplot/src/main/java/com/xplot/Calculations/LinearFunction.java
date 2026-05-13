@@ -1,7 +1,4 @@
 package com.xplot.Calculations;
-import javafx.scene.*;
-import javafx.stage.*;
-import java.util.*;
 
 public class LinearFunction extends Function {
     private String function;

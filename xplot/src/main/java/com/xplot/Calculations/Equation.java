@@ -19,11 +19,16 @@ public class Equation {
     public ArrayList<String> equationParts(String equation, int column) {
         ArrayList<String> parts = new ArrayList<String>();
         String currNumber = "";
+        String currString = "";
         for (int i = 0; i < equation.length(); i++) {
             char currChar = equation.charAt(i);
             //Multiple digit numbers should be one part
             if (Character.isDigit(currChar)) {
                 currNumber += currChar;
+            }
+            //Multiple letters should be together to form something like "sqrt"
+            else if (Character.isLetter(currChar)) {
+                currString += currChar;
             }
             else {
                 //If currNumber is not empty add to list
@@ -36,6 +41,7 @@ public class Equation {
                     parts.add(Character.toString(currChar));
                 }
             }
+            
         }
         //Base case
         if (!currNumber.equals("")) {

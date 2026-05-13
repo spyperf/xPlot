@@ -45,7 +45,7 @@ public class xPlot extends Application {
     public void getFunction(String input) {
         input = input.trim();
         if (input.equals("f(x)=x") || input.equals("y=x")) {
-            Function x = new Function(new LinearFunction(input));
+            LinearFunction x = new LinearFunction(input);
             addToList(x);
             drawFunction(x);
         } else {

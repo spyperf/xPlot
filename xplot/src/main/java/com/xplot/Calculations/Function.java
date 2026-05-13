@@ -1,6 +1,6 @@
 package com.xplot.Calculations;
 
 public class Function {
-    public Function(LinearFunction x) {
+    public Function() {
     }
 }

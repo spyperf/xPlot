@@ -6,6 +6,8 @@ import com.xplot.Calculations.Equation;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TableView;
@@ -19,6 +21,8 @@ mvn clean javafx:run */
 public class xPlot extends Application {
 
     private ArrayList<Function> functionsList = new ArrayList<Function>();
+    private Canvas graphCanvas;
+    private GraphicsContext gc;
 
     public ArrayList<Function> getFunctionsList() {
         return functionsList;
@@ -39,7 +43,33 @@ public class xPlot extends Application {
     }
 
     public void drawFunction(Function function) {
-        
+        if (gc == null) {
+            return;
+        }
+        double width = graphCanvas.getWidth();
+        double height = graphCanvas.getHeight();
+        double centerX = width / 2;
+        double centerY = height / 2;
+        // Drawing the axis
+        // X AXIS
+        gc.strokeLine(0, height / 2, width, height / 2);
+        // Y AXIS
+        gc.strokeLine(width / 2, 0, width / 2, height);
+        double pastX = -200;
+        // MAYBE USE EVALUATE FORMULA HERE MAKE SURE TO REMEMBER THIS /////////// INSTEAD OF Y = -10
+        double pastY = -200;
+        for (double newX = -200; newX <= 200; newX += 0.01) {
+            // double y = evalute(x); REMEMBER REMEMBER REMEMBER ///////////////
+            double newY = newX;
+            // CONVERTING FROM PIXEL TO MATH COORDIANTES
+            double mathPastX = centerX + pastX;
+            double mathPastY = centerY - pastY;
+            double mathNewX = centerX + newX;
+            double mathNewY = centerY - newY;
+            gc.strokeLine(mathPastX, mathPastY, mathNewX, mathNewY);
+            pastX = newX;
+            pastY = newY;
+        }
     }
 
     public void getFunction(String input) {
@@ -65,7 +95,6 @@ public class xPlot extends Application {
             functionsList.add("");
         }
     }*/
-
     @Override
     public void start(Stage mainStage) throws Exception {
         HBox root = new HBox();
@@ -78,6 +107,11 @@ public class xPlot extends Application {
         root.getChildren().addAll(functionTable);
         mainStage.setTitle("xPlot");
         mainStage.setScene(new Scene(root, 800, 600));
+        // GRAPH
+        graphCanvas = new Canvas(400, 600);
+        // Analogy: Pencil to draw the function
+        gc = graphCanvas.getGraphicsContext2D();
+        root.getChildren().add(graphCanvas);
         text.setOnAction(event -> {
             String input = text.getText();
             getFunction(input);

@@ -21,7 +21,9 @@ mvn clean javafx:run */
 public class xPlot extends Application {
 
     private ArrayList<Function> functionsList = new ArrayList<Function>();
+    // The board where the graph will be
     private Canvas graphCanvas;
+    // Like a pencil for drawing on the board
     private GraphicsContext gc;
 
     public ArrayList<Function> getFunctionsList() {

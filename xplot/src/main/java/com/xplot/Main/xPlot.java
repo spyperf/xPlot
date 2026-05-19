@@ -44,10 +44,7 @@ public class xPlot extends Application {
         functionsList.remove(index);
     }
 
-    public void drawFunction(Function function) {
-        if (gc == null) {
-            return;
-        }
+    public void drawAxis() {
         double width = graphCanvas.getWidth();
         double height = graphCanvas.getHeight();
         double centerX = width / 2;
@@ -57,6 +54,16 @@ public class xPlot extends Application {
         gc.strokeLine(0, height / 2, width, height / 2);
         // Y AXIS
         gc.strokeLine(width / 2, 0, width / 2, height);
+    }
+
+    public void drawFunction(Function function) {
+        if (gc == null) {
+            return;
+        }
+        double width = graphCanvas.getWidth();
+        double height = graphCanvas.getHeight();
+        double centerX = width / 2;
+        double centerY = height / 2;
         double pastX = -200;
         // MAYBE USE EVALUATE FORMULA HERE MAKE SURE TO REMEMBER THIS /////////// INSTEAD OF Y = -10
         double pastY = -200;
@@ -114,6 +121,7 @@ public class xPlot extends Application {
         // Analogy: Pencil to draw the function
         gc = graphCanvas.getGraphicsContext2D();
         root.getChildren().add(graphCanvas);
+        drawAxis();
         text.setOnAction(event -> {
             String input = text.getText();
             getFunction(input);
